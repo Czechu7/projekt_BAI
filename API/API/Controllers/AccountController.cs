@@ -59,6 +59,24 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         };
     }
 
+    [HttpPost("login-insecure")]
+    public async Task<ActionResult<UserDto>> LoginInsecure(LoginDto loginDto)
+    {
+        //' OR 1=1 --'
+
+        var query = $"SELECT * FROM Users WHERE UserName = '{loginDto.Username.ToLower()}'";
+        var user = await context.Users.FromSqlRaw(query).FirstOrDefaultAsync();
+
+        if (user == null) return Unauthorized("Invalid username");
+
+        return new UserDto
+        {
+            Username = user.UserName,
+            Token = tokenService.CreateToken(user)
+        };
+    }
+
+
     private async Task<bool> UserExists(string username) 
     {
         return await context.Users.AnyAsync(x => x.UserName.ToLower() == username.ToLower()); // Bob != bob
