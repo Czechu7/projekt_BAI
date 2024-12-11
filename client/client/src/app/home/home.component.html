@@ -1,0 +1,183 @@
+<!-- home.component.html -->
+<div class="container-fluid p-0">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="hero-title display-1 fw-bold text-white mb-4">👑 AutoElite</h1>
+      <p class="hero-subtitle h2 text-white-50 mb-5">Premium Car Dealership</p>
+    </div>
+
+    <div class="hero-slider">
+      <carousel [interval]="3000" [showIndicators]="true" [pauseOnFocus]="true">
+        <slide>
+          <img src="assets/images/zdjecie1slide.png" class="d-block w-100" alt="Luxury Cars">
+        </slide>
+        <slide>
+          <img src="assets/images/zdjecieslide2.jpg" class="d-block w-100" alt="Sports Cars">
+        </slide>
+        <slide>
+          <img src="assets/images/zdjecieslide3.jpg" class="d-block w-100" alt="SUVs">
+        </slide>
+      </carousel>
+    </div>
+  </section>
+
+  <!-- Featured Brands -->
+  <section class="section brands-section py-5">
+    <div class="container">
+      <h2 class="section-title display-4 text-center mb-5">Our Brands</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="glass-card brand-card text-center p-4">
+            <h3 class="h4 fw-bold">BMW</h3>
+            <p class="text-muted">Luxury & Performance</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card brand-card text-center p-4">
+            <h3 class="h4 fw-bold">Mercedes-Benz</h3>
+            <p class="text-muted">Ultimate Luxury</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card brand-card text-center p-4">
+            <h3 class="h4 fw-bold">Audi</h3>
+            <p class="text-muted">Technology & Style</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card brand-card text-center p-4">
+            <h3 class="h4 fw-bold">Porsche</h3>
+            <p class="text-muted">Sports Excellence</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cars -->
+  <section class="section cars-section py-5">
+    <div class="container">
+      <h2 class="section-title display-4 text-center mb-5">Featured Vehicles</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="glass-card h-100 p-4">
+            <div class="car-image mb-4">
+              <img src="assets/images/zdjecie1slide.png" alt="Golf 6 Combi" class="img-fluid rounded-3">
+            </div>
+            <h3 class="h4 fw-bold mb-3">Volkswagen Golf 6 Kombi Chocolate Color</h3>
+            <p class="price h5 text-primary mb-3">Starting from $5,000</p>
+            <p class="description mb-4">190hp ultra luxury white interior, good bass. You can drive it past a photoradar with 40km/h</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1">Details</button>
+              <button class="btn btn-outline-primary">Test Drive</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="glass-card h-100 p-4">
+            <div class="car-image mb-4">
+              <img src="assets/images/gtamg.jpg" alt="Mercedes AMG" class="img-fluid rounded-3">
+            </div>
+            <h3 class="h4 fw-bold mb-3">Mercedes-AMG GT</h3>
+            <p class="price h5 text-primary mb-3">Starting from $92,500</p>
+            <p class="description mb-4">577hp V8 Biturbo engine, Handcrafted performance meets luxury.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1">Details</button>
+              <button class="btn btn-outline-primary">Test Drive</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="glass-card h-100 p-4">
+            <div class="car-image mb-4">
+              <img src="assets/images/g3.jpg" alt="Porsche 911" class="img-fluid rounded-3">
+            </div>
+            <h3 class="h4 fw-bold mb-3">Porsche 911 GT3</h3>
+            <p class="price h5 text-primary mb-3">Starting from $161,100</p>
+            <p class="description mb-4">502hp Naturally aspirated flat-six, Pure driving experience.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1">Details</button>
+              <button class="btn btn-outline-primary">Test Drive</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services-section py-5">
+    <div class="container">
+      <h2 class="section-title display-4 text-center mb-5">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="glass-card text-center p-4">
+            <h3 class="h5 fw-bold">Financing</h3>
+            <p class="mb-0">Flexible payment options tailored to you</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card text-center p-4">
+            <h3 class="h5 fw-bold">Service</h3>
+            <p class="mb-0">Professional maintenance and repairs</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card text-center p-4">
+            <h3 class="h5 fw-bold">Trade-In</h3>
+            <p class="mb-0">Fair valuation for your current vehicle</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="glass-card text-center p-4">
+            <h3 class="h5 fw-bold">Insurance</h3>
+            <p class="mb-0">Comprehensive coverage options</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="glass-card p-5">
+            <h2 class="section-title display-4 mb-4">Contact Us</h2>
+            <p class="lead mb-4">Schedule a test drive or get more information</p>
+            @if (!contactMode) {
+              <button (click)="contactToggle()" class="btn btn-primary btn-lg px-5 py-3">Get in Touch</button>
+            } @else {
+              <div class="contact-form">
+
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section register-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="glass-card p-5">
+            <h2 class="section-title display-4 mb-4">Join Our Community</h2>
+            <p class="lead mb-4">Register now to receive exclusive offers and updates</p>
+            @if (!registerMode) {
+              <button (click)="registerToggle()" class="btn btn-primary btn-lg px-5 py-3">Register Now</button>
+            } @else {
+              <div class="register-container">
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

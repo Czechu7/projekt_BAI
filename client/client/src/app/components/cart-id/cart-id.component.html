@@ -1,0 +1,31 @@
+<!-- cart-id.component.html -->
+@if (cart) {
+<div class="container">
+    <div class="cart-details">
+        <div class="cart-header">
+            <h2>Cart #{{ cart.id }}</h2>
+            <span class="user-info">Owner: {{ cart.user.userName }}</span>
+        </div>
+        <div class="product-card">
+            <div class="product-info">
+                <h3>{{ cart.product.name }}</h3>
+                <div class="details">
+                    <div class="detail-item">
+                        <span class="label">Quantity:</span>
+                        <span class="value">{{ cart.product.quantity }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Price:</span>
+                        <span class="value">${{ cart.product.price }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="total-price">
+                <span class="label">Total:</span>
+                <span class="value">${{ cart.product.price }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+}

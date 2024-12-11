@@ -1,0 +1,7 @@
+<ul class="list-group">
+    @for (user of users; track user.id) {
+      <li class="list-group-item">
+        {{ user.id + ". " + user.userName }}
+      </li>
+    }
+  </ul> 

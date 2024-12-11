@@ -1,0 +1,73 @@
+<mat-toolbar class="modern-nav">
+    <mat-toolbar-row class="nav-container">
+      <!-- Logo section -->
+      <a mat-button class="brand-logo" routerLink="/">
+        <span>Aplikacje internetowe</span>
+      </a>
+  
+      <!-- Navigation links -->
+      <nav class="nav-links">
+        @if (accountService.currentUser()) {
+          <a mat-button routerLink="/members" routerLinkActive="active">
+            <mat-icon>people</mat-icon>
+            <span>Users</span>
+          </a>
+          <a mat-button routerLink="/products" routerLinkActive="active">
+            <mat-icon>store</mat-icon>
+            <span>Products</span>
+          </a>
+          <a mat-button routerLink="/cart" routerLinkActive="active">
+            <mat-icon>shopping_cart</mat-icon>
+            <span>Cart</span>
+          </a>
+        }
+        <a mat-button routerLink="/errors" routerLinkActive="active">
+          <mat-icon>error_outline</mat-icon>
+          <span>Errors</span>
+        </a>
+      </nav>
+  
+      <span class="spacer"></span>
+  
+      <!-- User menu section -->
+      @if (accountService.currentUser()) {
+        <button mat-button class="user-btn" [matMenuTriggerFor]="userMenu">
+          <mat-icon>account_circle</mat-icon>
+          <span>{{accountService.currentUser()?.username | titlecase}}</span>
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit profile</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      }
+  
+      <!-- Login form -->
+      @if (!accountService.currentUser()) {
+        <form #loginForm="ngForm" (ngSubmit)="login()" class="login-form">
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput name="username" [(ngModel)]="model.username" 
+                   placeholder="Username">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput type="password" name="password" 
+                   [(ngModel)]="model.password" placeholder="Password">
+          </mat-form-field>
+  
+          <button mat-flat-button color="accent" type="submit">
+            Login
+          </button>
+        </form>
+      }
+    </mat-toolbar-row>
+  </mat-toolbar>
