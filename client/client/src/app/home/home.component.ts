@@ -20,7 +20,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 export class HomeComponent implements OnInit {
   http = inject(HttpClient);
   registerMode = false;
-  contactMode = false; // Add this property
+  contactMode = false; 
   users: any;
   
   slideConfig = {

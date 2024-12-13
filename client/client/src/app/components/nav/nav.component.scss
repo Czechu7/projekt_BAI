@@ -1,0 +1,59 @@
+/* Modern Navbar with Dark Blue Theme */
+.navbar {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%) !important;
+    padding: 1rem 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    border-radius: 0 0 15px 15px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar-brand {
+    font-weight: 600;
+    font-size: 1.5rem;
+    background: linear-gradient(to right, #fff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link {
+    color: #e5e7eb !important;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: white !important;
+  }
+  
+  .dropdown-menu {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-item {
+    color: #e5e7eb;
+    border-radius: 8px;
+    margin: 0.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-item:hover {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: white;
+    transform: translateX(5px);
+  }

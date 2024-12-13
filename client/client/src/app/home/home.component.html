@@ -3,20 +3,20 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title display-1 fw-bold text-white mb-4">👑 AutoElite</h1>
+      <h1 class="hero-title display-1 fw-bold text-white mb-4">AutoElite</h1>
       <p class="hero-subtitle h2 text-white-50 mb-5">Premium Car Dealership</p>
     </div>
 
     <div class="hero-slider">
       <carousel [interval]="3000" [showIndicators]="true" [pauseOnFocus]="true">
         <slide>
-          <img src="assets/images/zdjecie1slide.png" class="d-block w-100" alt="Luxury Cars">
+          <img src="../assets/images/zdjecie1slide.png" class="d-block w-100" alt="Luxury Cars">
         </slide>
         <slide>
-          <img src="assets/images/zdjecieslide2.jpg" class="d-block w-100" alt="Sports Cars">
+          <img src="../assets/images/zdjecieslide2.png" class="d-block w-100" alt="Sports Cars">
         </slide>
         <slide>
-          <img src="assets/images/zdjecieslide3.jpg" class="d-block w-100" alt="SUVs">
+          <img src="../assets/images/zdjecieslide3.png" class="d-block w-100" alt="SUVs">
         </slide>
       </carousel>
     </div>
@@ -63,11 +63,11 @@
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
             <div class="car-image mb-4">
-              <img src="assets/images/zdjecie1slide.png" alt="Golf 6 Combi" class="img-fluid rounded-3">
+              <img src="../assets/images/zdjecie1slide.png" alt="BMW M4" class="img-fluid rounded-3">
             </div>
-            <h3 class="h4 fw-bold mb-3">Volkswagen Golf 6 Kombi Chocolate Color</h3>
-            <p class="price h5 text-primary mb-3">Starting from $5,000</p>
-            <p class="description mb-4">190hp ultra luxury white interior, good bass. You can drive it past a photoradar with 40km/h</p>
+            <h3 class="h4 fw-bold mb-3">Volkswagen Golf 6</h3>
+            <p class="price h5 text-primary mb-3">Starting from $4,700</p>
+            <p class="description mb-4">190hp 2.0TDI DSG, Track-ready performance with luxury comfort.</p>
             <div class="d-flex gap-2">
               <button class="btn btn-primary flex-grow-1">Details</button>
               <button class="btn btn-outline-primary">Test Drive</button>
@@ -78,7 +78,7 @@
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
             <div class="car-image mb-4">
-              <img src="assets/images/gtamg.jpg" alt="Mercedes AMG" class="img-fluid rounded-3">
+              <img src="../assets/images/gtamg.jpg" alt="Mercedes AMG" class="img-fluid rounded-3">
             </div>
             <h3 class="h4 fw-bold mb-3">Mercedes-AMG GT</h3>
             <p class="price h5 text-primary mb-3">Starting from $92,500</p>
@@ -93,7 +93,7 @@
         <div class="col-md-4">
           <div class="glass-card h-100 p-4">
             <div class="car-image mb-4">
-              <img src="assets/images/g3.jpg" alt="Porsche 911" class="img-fluid rounded-3">
+              <img src="../assets/images/g3.jpg" alt="Porsche 911" class="img-fluid rounded-3">
             </div>
             <h3 class="h4 fw-bold mb-3">Porsche 911 GT3</h3>
             <p class="price h5 text-primary mb-3">Starting from $161,100</p>
@@ -140,27 +140,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Contact Section -->
-  <section class="section contact-section py-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
-          <div class="glass-card p-5">
-            <h2 class="section-title display-4 mb-4">Contact Us</h2>
-            <p class="lead mb-4">Schedule a test drive or get more information</p>
-            @if (!contactMode) {
-              <button (click)="contactToggle()" class="btn btn-primary btn-lg px-5 py-3">Get in Touch</button>
-            } @else {
-              <div class="contact-form">
-
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section register-section py-5">
     <div class="container">
       <div class="row justify-content-center">
@@ -173,6 +152,26 @@
             } @else {
               <div class="register-container">
                 <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="section contact-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="glass-card p-5">
+            <h2 class="section-title display-4 mb-4">Contact Us</h2>
+            <p class="lead mb-4">Schedule a test drive or get more information</p>
+            @if (!contactMode) {
+              <button (click)="contactToggle()" class="btn btn-primary btn-lg px-5 py-3">Get in Touch</button>
+            } @else {
+              <div class="contact-form">
+           
               </div>
             }
           </div>

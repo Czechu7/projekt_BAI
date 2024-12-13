@@ -8,6 +8,7 @@ body {
   }
 }
 
+
 .section {
   position: relative;
   z-index: 2;
@@ -20,9 +21,49 @@ body {
 .contact-section {
   z-index: 9;
 }
+.register-section {
+  position: relative;
+  z-index: 10; 
+  .glass-card {
+    position: relative;
+    z-index: 11;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .register-container {
+    position: relative;
+    z-index: 12; 
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #4158D0, #C850C0);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(65, 88, 208, 0.3);
+    }
+  }
+}
 .hero-section {
   height: 100vh;
   position: relative;
+  background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
   color: white;
   overflow: hidden;
 }
@@ -98,46 +139,5 @@ body {
   
   .car-image {
     height: 150px;
-  }
-}
-
-.register-section {
-  position: relative;
-  z-index: 10; 
-  
-  .glass-card {
-    position: relative;
-    z-index: 11;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-    transition: transform 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-5px);
-    }
-  }
-
-  .register-container {
-    position: relative;
-    z-index: 12; 
-    margin-top: 20px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #4158D0, #C850C0);
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(65, 88, 208, 0.3);
-    }
   }
 }

@@ -1,73 +1,89 @@
-<mat-toolbar class="modern-nav">
-    <mat-toolbar-row class="nav-container">
-      <!-- Logo section -->
-      <a mat-button class="brand-logo" routerLink="/">
-        <span>Aplikacje internetowe</span>
-      </a>
-  
-      <!-- Navigation links -->
-      <nav class="nav-links">
+<nav class="navbar modern-nav navbar-expand-lg navbar-light bg-light">
+  <div class="container nav-container">
+    <!-- Logo section -->
+    <a class="navbar-brand brand-logo" routerLink="/">
+      <span>Aplikacje internetowe</span>
+    </a>
+
+    <!-- Toggle button for small screens -->
+    <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         @if (accountService.currentUser()) {
-          <a mat-button routerLink="/members" routerLinkActive="active">
-            <mat-icon>people</mat-icon>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members" routerLinkActive="active">
+            <i class="bi bi-people"></i>
             <span>Users</span>
           </a>
-          <a mat-button routerLink="/products" routerLinkActive="active">
-            <mat-icon>store</mat-icon>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active">
+            <i class="bi bi-shop"></i>
             <span>Products</span>
           </a>
-          <a mat-button routerLink="/cart" routerLinkActive="active">
-            <mat-icon>shopping_cart</mat-icon>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active">
+            <i class="bi bi-cart"></i>
             <span>Cart</span>
           </a>
+        </li>
         }
-        <a mat-button routerLink="/errors" routerLinkActive="active">
-          <mat-icon>error_outline</mat-icon>
-          <span>Errors</span>
-        </a>
-      </nav>
-  
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/errors" routerLinkActive="active">
+            <i class="bi bi-exclamation-circle"></i>
+            <span>Errors</span>
+          </a>
+        </li>
+      </ul>
       <span class="spacer"></span>
-  
+
       <!-- User menu section -->
       @if (accountService.currentUser()) {
-        <button mat-button class="user-btn" [matMenuTriggerFor]="userMenu">
-          <mat-icon>account_circle</mat-icon>
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle user-btn" type="button" id="userMenuDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+           <i class="bi bi-person-circle"></i>
           <span>{{accountService.currentUser()?.username | titlecase}}</span>
-          <mat-icon>expand_more</mat-icon>
+          <i class="bi bi-caret-down-fill"></i>
         </button>
-        <mat-menu #userMenu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>edit</mat-icon>
-            <span>Edit profile</span>
-          </button>
-          <mat-divider></mat-divider>
-          <button mat-menu-item (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuDropdown">
+          <li>
+            <a class="dropdown-item" href="#">
+                <i class="bi bi-pencil"></i>
+              <span>Edit profile</span>
+            </a>
+          </li>
+            <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item" (click)="logout()" href="#">
+                <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       }
-  
-      <!-- Login form -->
+
+       <!-- Login form -->
       @if (!accountService.currentUser()) {
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="login-form">
-          <mat-form-field appearance="outline">
-            <mat-icon matPrefix>person</mat-icon>
-            <input matInput name="username" [(ngModel)]="model.username" 
-                   placeholder="Username">
-          </mat-form-field>
-  
-          <mat-form-field appearance="outline">
-            <mat-icon matPrefix>lock</mat-icon>
-            <input matInput type="password" name="password" 
-                   [(ngModel)]="model.password" placeholder="Password">
-          </mat-form-field>
-  
-          <button mat-flat-button color="accent" type="submit">
-            Login
-          </button>
+       <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex login-form">
+         <div class="me-2">
+           <input type="text" name="username" [(ngModel)]="model.username" 
+                    placeholder="Username" class="form-control">
+         </div>
+         <div class="me-2">
+           <input type="password" name="password" 
+                    [(ngModel)]="model.password" placeholder="Password" class="form-control">
+         </div>
+         <button class="btn btn-primary" type="submit">Login</button>
         </form>
       }
-    </mat-toolbar-row>
-  </mat-toolbar>
+    </div>
+  </div>
+</nav>
