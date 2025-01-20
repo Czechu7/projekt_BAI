@@ -27,7 +27,7 @@
                 Welcome {{accountService.currentUser()?.username | titlecase}}
             </a>
             <div *dropdownMenu class="dropdown-menu">
-                <a class="dropdown-item">Edit profile</a>
+                <a class="dropdown-item" routerLink="/edit-profile" routerLinkActive="active">Edit profile</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
@@ -37,22 +37,15 @@
 
 
         @if(!accountService.currentUser()){
-            @if(!showTotpForm) {
               <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
                 <input name="username" [(ngModel)]="model.username" 
                   class="form-control me-2" placeholder="Username">
                 <input name="password" [(ngModel)]="model.password" 
                   class="form-control me-2" placeholder="Password"
                   type="password">
-                <button class="btn btn-success" type="submit">Login</button>
+                <button class="btn btn-success me-2 w-50" type="submit">Login</button>
+                <button class="btn btn-primary w-50" type="button" (click)="loginWithSqlInjection()">Login SQL Injection</button>
               </form>
-            } @else {
-              <form #totpForm="ngForm" (ngSubmit)="verifyTotp()" class="d-flex" autocomplete="off">
-                <input name="totpCode" [(ngModel)]="totpCode" 
-                  class="form-control me-2" placeholder="Enter TOTP Code">
-                <button class="btn btn-success" type="submit">Verify</button>
-              </form>
-            }
           }
     </div>
 </nav>

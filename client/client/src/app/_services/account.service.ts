@@ -17,28 +17,12 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('tempUser', JSON.stringify({
+          localStorage.setItem('user', JSON.stringify({
             id : user.id,
             username: user.username,
-            totpCode: user.totpCode
+            totpCode: user.totpCode,
+            token: user.token
           }));
-        }
-        return user;
-      })
-    );
-  }
-
-  verifyTotp(totpCode: string) {
-    const tempUser = JSON.parse(localStorage.getItem('tempUser') || '{}');
-    return this.http.post<User>(this.baseUrl + "account/verify-totp", {
-      id: tempUser.id,
-      username: tempUser.username,
-      totpCode: totpCode
-    }).pipe(
-      map(user => {
-        if (user) {
-          localStorage.removeItem('tempUser');
-          localStorage.setItem('user', JSON.stringify(user));
           this.currentUser.set(user);
         }
         return user;
@@ -46,6 +30,22 @@ export class AccountService {
     );
   }
 
+  loginWithSqlInjection(model: any){
+    return this.http.post<User>(this.baseUrl + "account/login-insecure", model).pipe(
+      map(user => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify({
+            id : user.id,
+            username: user.username,
+            totpCode: user.totpCode,
+            token: user.token
+          }));
+          this.currentUser.set(user);
+        }
+        return user;
+      })
+    );
+  }
 
   register(model: any){
     return this.http.post<User>(this.baseUrl + "account/register", model).pipe(

@@ -18,37 +18,24 @@ export class NavComponent {
   private toastr = inject(ToastrService)
   model: any = {};
 
-  showTotpForm = false;
-  totpCode: string = '';
-
   login() {
     this.accountService.login(this.model).subscribe({
       next: response => {
-        console.log('TOTP Code:', response.totpCode);
-        this.showTotpForm = true;
-        this.toastr.info('Please enter the TOTP code shown in the console');
       },
       error: error => this.toastr.error(error.error)
     });
   }
 
-  verifyTotp() {
-    this.accountService.verifyTotp(this.totpCode).subscribe({
-      next: () => {
-        this.showTotpForm = false;
-        this.router.navigateByUrl('/members');
-        this.toastr.success('Successfully logged in');
-      },
-      error: error => {
-        this.toastr.error(error.error);
-        this.totpCode = '';
-      }
-    });
-  }
-
-
   logout(){
     this.accountService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  loginWithSqlInjection(){
+    this.accountService.loginWithSqlInjection(this.model).subscribe({
+      next: response => {
+      },
+      error: error => this.toastr.error(error.error)
+    });
   }
 }

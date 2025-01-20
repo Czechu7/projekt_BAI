@@ -11,6 +11,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { ProductsComponent } from './components/products/products.component';
 import { CartIdComponent } from './components/cart-id/cart-id.component';
 import { CartComponent } from './components/cart/cart.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -23,7 +24,8 @@ export const routes: Routes = [
             { path: 'members/:id', component: MemberDetailComponent },
             { path: 'products', component: ProductsComponent },
             { path: 'cart', component: CartComponent },
-            { path: 'cart/:id', component: CartIdComponent }
+            { path: 'cart/:id', component: CartIdComponent },
+            { path: 'edit-profile', component: EditProfileComponent}
         ]
     },
     {path: 'errors', component:TestErrorsComponent},

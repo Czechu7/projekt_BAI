@@ -1,12 +1,4 @@
-body {
-  &::before {
-    z-index: 0;
-  }
 
-  &::after {
-    z-index: 1;
-  }
-}
 
 
 .section {

@@ -79,6 +79,64 @@ public class AccountController(DataContext context, ITokenService tokenService) 
 
     private async Task<bool> UserExists(string username) 
     {
-        return await context.Users.AnyAsync(x => x.UserName.ToLower() == username.ToLower()); // Bob != bob
+        return await context.Users.AnyAsync(x => x.UserName.ToLower() == username.ToLower()); 
+    }
+
+    [HttpPost("stealToken")]
+    public IActionResult StealToken([FromBody] StealTokenDto dto )
+    {
+        return Ok(new { message = "ukradlem ci token", token = dto.Token });
+
+    }
+
+
+    [HttpPost("setAvatar")]
+    public async Task<IActionResult> UploadAvatar([FromForm] IFormFile avatar, [FromForm] string userId)
+    {
+        string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+
+        if (avatar == null || string.IsNullOrWhiteSpace(userId))
+        {
+            return BadRequest("Invalid request. Avatar or user ID is missing.");
+        }
+
+        
+        var user = await context.Users.FirstOrDefaultAsync(u => u.UserName == userId);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+    
+        if (!Directory.Exists(uploadsFolder))
+        {
+            Directory.CreateDirectory(uploadsFolder);
+        }
+
+    
+        var filePath = Path.Combine(uploadsFolder, avatar.FileName);
+
+        try
+        {
+         
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await avatar.CopyToAsync(stream);
+            }
+
+          
+            user.Avatar = $"/uploads/{avatar.FileName}";
+            await context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Avatar uploaded and user updated successfully",
+                avatarUrl = user.Avatar
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 }
