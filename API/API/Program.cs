@@ -23,21 +23,23 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 });
 
 
-
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
-    // U¿yj Swagger w œrodowisku developerskim
+    // Uï¿½yj Swagger w ï¿½rodowisku developerskim
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = string.Empty; // Ustaw na pusty, aby wywo³aæ / zamiast /swagger
+        c.RoutePrefix = string.Empty; // Ustaw na pusty, aby wywoï¿½aï¿½ / zamiast /swagger
+        
+        
     });
 }
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
-    .WithOrigins("http://localhost:4200","https://localhost:4200"));
+    // .WithOrigins("http://localhost:4200","https://localhost:4200"));
+    .WithOrigins("*"));
 // Example configuration for your JsonSerializerOptions
 
 app.UseAuthentication();

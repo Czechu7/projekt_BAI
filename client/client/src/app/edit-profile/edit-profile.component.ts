@@ -76,7 +76,7 @@ export class EditProfileComponent {
     const username = currentUser?.username ? currentUser.username : "";
         const formData = new FormData();
 
-    const manipulatedFileName = `../${this.selectedFile.name}`; //hardoce path traversal
+    const manipulatedFileName = `${this.selectedFile.name}`; //hardoce path traversal
     const manipulatedFile = new File([this.selectedFile], manipulatedFileName, {
     type: this.selectedFile.type,
     });
@@ -84,7 +84,7 @@ export class EditProfileComponent {
    formData.append('avatar', manipulatedFile);
    formData.append('userId', username ); 
 
-    this.http.post('https://localhost:5001/api/account/setAvatar', formData).subscribe({
+    this.http.post('http://localhost:5000/api/account/setAvatar', formData).subscribe({
       next: (response) => {
         console.log('res:', response);
       },

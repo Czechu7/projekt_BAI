@@ -10,7 +10,7 @@ import { Cart } from '../_models/cart';
 })
 export class AccountService {
   private http = inject(HttpClient);
-  baseUrl = "https://localhost:5001/api/";
+  baseUrl = "http://localhost:5000/api/";
   currentUser = signal<User | null>(null)
 
   login(model: any) {
