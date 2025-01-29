@@ -9,7 +9,7 @@
       [class.dropzone-active]="isDragOver"
     >
       @if(!avatarUrl) {
-        <p class="text-muted">Przenieś awatar tutaj lub skorzystaj z przycisku ponmiżej</p>
+        <p class="text-muted">Przenieś awatar tutaj lub skorzystaj z przycisku poniżej</p>
       } @else {
         <img [src]="avatarUrl" alt="User Avatar" class="img-thumbnail" />
       }
@@ -46,5 +46,17 @@
         Save Avatar
       </button>
     </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button type="button" class="btn btn-secondary me-2" (click)="triggerFileInput()">Choose Avatar Secure</button>
+      <button 
+        type="button" 
+        class="btn btn-success" 
+        [disabled]="!selectedFile" 
+        (click)="uploadAvatarSecure()"
+      >
+        Save Avatar
+      </button>
+    </div>
+
   </div>
   

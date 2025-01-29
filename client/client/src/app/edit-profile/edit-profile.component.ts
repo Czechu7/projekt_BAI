@@ -94,4 +94,41 @@ export class EditProfileComponent {
       },
     });
   }
+ 
+  uploadAvatarSecure() {
+    if (!this.selectedFile) {
+      alert('No file selected!');
+      return;
+    }
+  
+    const allowedExtensions = ['image/jpeg', 'image/png'];
+    if (!allowedExtensions.includes(this.selectedFile.type)) {
+      alert('Only JPG and PNG files are allowed!');
+      return;
+    }
+  
+    const currentUser = this.accountService.currentUser(); 
+    const username = currentUser?.username ? currentUser.username : "";
+    const formData = new FormData();
+  
+    const manipulatedFileName = `${this.selectedFile.name}`;
+    const manipulatedFile = new File([this.selectedFile], manipulatedFileName, {
+      type: this.selectedFile.type,
+    });
+  
+    formData.append('avatar', manipulatedFile);
+    formData.append('userId', username);
+  
+    this.http.post('http://localhost:5000/api/account/setAvatarSecure', formData).subscribe({
+      next: (response) => {
+        console.log('res:', response);
+      },
+      error: (err) => {
+        console.error('Error:', err);
+        alert('error.');
+      },
+    });
+  }
+
+
 }

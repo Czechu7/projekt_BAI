@@ -30,6 +30,25 @@ export class AccountService {
     );
   }
 
+  loginBruteForce(model: any) {
+    return this.http.post<User>(this.baseUrl + "account/loginBruteForce", model).pipe(
+      map(user => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify({
+            id : user.id,
+            username: user.username,
+            totpCode: user.totpCode,
+            token: user.token
+          }));
+          this.currentUser.set(user);
+        }
+        return user;
+      })
+    );
+  }
+
+
+
   loginWithSqlInjection(model: any){
     return this.http.post<User>(this.baseUrl + "account/login-insecure", model).pipe(
       map(user => {
